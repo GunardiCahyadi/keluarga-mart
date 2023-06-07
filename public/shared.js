@@ -88,7 +88,7 @@ export function setOrdersToLocalStorage(orders) {
  * @returns { Item[] }
  */
 export function sortMenuByPrice(menuList, mode) {
-	mode === 'ascending' ? menuList.sort((h1 , h2) => h1.price - h2.price) : menuList.sort((h1 , h2) => h2.price - h1.price ) ;
+	mode === 'ascending' ? menuList.sort((h1 , h2) => h1.price - h2.price) : menuList.sort((h1 , h2) => h2.price - h1.price) ;
 }
 
 /**
@@ -100,7 +100,10 @@ export function sortMenuByPrice(menuList, mode) {
  *
  * @returns { Item[] }
  */
-export function filterMenuByQuery(menuList, query) {}
+export function filterMenuByQuery(menuList, query) {
+	let nameFil = menuList.filter(item => item.name === query)
+	return nameFill
+}
 
 /********************************************************************************
  * Below are functions to interact with cart data.
