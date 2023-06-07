@@ -75,7 +75,33 @@ export function getOrdersFromLocalStorage() {
 export function setOrdersToLocalStorage(orders) {}
 
 /********************************************************************************
- * Below are unctions to interact with cart data.
+ * Below are functions to interact with menu list.
+ */
+
+/**
+ * Urutkan item-item di dalam menu berdasarkan harga.
+ * Terdapat dua mode: "ascending"  dan "decending".
+ *
+ * @param { Item[] } menuList
+ * @param { "ascending" | "descending" } mode
+ *
+ * @returns { Item[] }
+ */
+export function sortMenuByPrice(menuList, mode) {}
+
+/**
+ * Filter item-item di menu dengan melihat apakah string
+ * yang didapat terdapat di dalam nama item.
+ *
+ * @param { Item[] } menuList
+ * @param { string } query
+ *
+ * @returns { Item[] }
+ */
+export function filterMenuByQuery(menuList, query) {}
+
+/********************************************************************************
+ * Below are functions to interact with cart data.
  */
 
 /**
