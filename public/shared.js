@@ -8,25 +8,25 @@ export const MENU = {
 		id: "item-1",
 		name: "Chicken Karage Cheesy Buldak + Nasi",
 		price: 17_000,
-		imageUrl: "/assets/",
+		imageUrl: "/assets/item-1.jpeg",
 	},
 	"item-2": {
 		id: "item-2",
 		name: "Chicken Karage Cheesy Buldak + Nasi",
 		price: 17_000,
-		imageUrl: "/assets/",
+		imageUrl: "/assets/item-2.jpeg",
 	},
 	"item-3": {
 		id: "item-3",
 		name: "Chicken Karage Cheesy Buldak + Nasi",
 		price: 17_000,
-		imageUrl: "/assets/",
+		imageUrl: "/assets/item-3.jpeg",
 	},
 	"item-4": {
 		id: "item-4",
 		name: "Chicken Karage Cheesy Buldak + Nasi",
 		price: 17_000,
-		imageUrl: "/assets/",
+		imageUrl: "/assets/item-4.jpeg",
 	},
 };
 
@@ -103,10 +103,10 @@ export function removeItemFromCart(itemId, cart) {}
 /**
  * Buat object order baru dan update local storage.
  *
- * @param { Order["items"] } items
+ * @param { Order["cart"] } cart
  * @param { Orders } orders
  */
-export function createNewOrder(items, orders) {}
+export function createNewOrder(cart, orders) {}
 
 /**
  * Rubah status order dari ongoing -> completed, pindahkan order dari
@@ -130,7 +130,7 @@ export function updateOrderStatus(orderId, orders) {}
  */
 
 /**
- * @typedef { { id: string; createdAt: string; items: string[]; isCompleted: boolean } } Order
+ * @typedef { { id: string; createdAt: string; cart: Cart; ticket: string; isCompleted: boolean } } Order
  */
 
 /**
