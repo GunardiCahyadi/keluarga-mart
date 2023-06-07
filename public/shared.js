@@ -152,6 +152,10 @@ export function updateOrderStatus(orderId, orders) {}
  */
 
 /**
+ * Use the itemId as property key, and the item quantity as value:
+ *
+ * { [itemId]: quantity }
+ *
  * @typedef { Record<string, number> } Cart
  */
 
