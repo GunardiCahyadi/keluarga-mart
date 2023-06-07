@@ -1,0 +1,23 @@
+{
+	"name": "keluarga-mart",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"format": "prettier -uw .",
+		"test": "vitest"
+	},
+	"devDependencies": {
+		"jsdom": "^22.1.0",
+		"prettier": "^2.8.8",
+		"tailwindcss": "^3.3.2",
+		"vite": "^4.3.9",
+		"vitest": "^0.32.0"
+	},
+	"prettier": {
+		"tabWidth": 4,
+		"useTabs": true
+	},
+	"engines": {
+		"node": ">=18"
+	}
+}

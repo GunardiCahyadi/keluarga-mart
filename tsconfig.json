@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"lib": ["esnext", "dom", "dom.iterable"],
+		"module": "esnext",
+		"moduleResolution": "nodenext",
+		"noEmit": true,
+		"skipLibCheck": true,
+		"strict": false
+	},
+	"include": ["public", "vitest.config.js"]
+}
