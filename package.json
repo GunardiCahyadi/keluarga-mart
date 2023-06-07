@@ -3,6 +3,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
+		"dev": "tailwindcss -i ./src/tailwind.css -o ./public/index.css --watch",
 		"format": "prettier -uw .",
 		"test": "vitest",
 		"prepare": "husky install",

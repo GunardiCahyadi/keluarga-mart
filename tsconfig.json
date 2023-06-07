@@ -10,5 +10,5 @@
 		"skipLibCheck": true,
 		"strict": false
 	},
-	"include": ["public", "vitest.config.js"]
+	"include": ["public", "tailwind.config.js", "vitest.config.js"]
 }

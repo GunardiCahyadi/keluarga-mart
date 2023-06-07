@@ -1,8 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+import { fontFamily } from "tailwindcss/defaultTheme.js";
+
+/** @type { import('tailwindcss').Config } */
 export default {
-	content: ["./public/**/*.html"],
+	content: ["./public/**/*.{html,js}"],
 	theme: {
-		extend: {},
+		fontFamily: {
+			display: ["Poppins"],
+			sans: ["Inter", ...fontFamily.sans],
+		},
 	},
 	plugins: [],
 };
