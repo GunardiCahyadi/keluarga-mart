@@ -17,12 +17,11 @@ const ORDERS_STORAGE_KEY = "keluargaMartOrders";
  * @returns { Cart }
  */
 export function getCartFromLocalStorage() {
-	let getData = JSON.parse(localStorage.getItem(CART_STORAGE_KEY));
-
-	if (getData === undefined) {
+	let getData = localStorage.getItem(CART_STORAGE_KEY);
+	if (!getData) {
 		return {};
 	} else {
-		return getData;
+		return JSON.parse(getData);
 	}
 }
 
@@ -41,7 +40,8 @@ export function setCartToLocalStorage(cart) {
  * @returns { Orders }
  */
 export function getOrdersFromLocalStorage() {
-	return JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY))
+	const raw = localStorage.getItem(ORDERS_STORAGE_KEY)
+	return raw ? JSON.parse(raw) : {completed: [], ongoing: []}
 	
 }
 
@@ -97,6 +97,7 @@ export function filterMenuByQuery(menuList, query) {
  */
 
 export function addItemToCart(itemId, cart) {
+	
 	if (cart[itemId] === undefined) {
 		cart[itemId] = 1;
 	} else {
