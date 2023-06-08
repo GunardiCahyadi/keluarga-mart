@@ -32,7 +32,7 @@ export function getCartFromLocalStorage() {
  * @param { Cart } cart
  */
 export function setCartToLocalStorage(cart) {
-	localStorage.setItem('keluargaMartCart', JSON.stringify(cart));
+	localStorage.setItem("keluargaMartCart", JSON.stringify(cart));
 }
 
 /**
@@ -41,8 +41,8 @@ export function setCartToLocalStorage(cart) {
  * @returns { Orders }
  */
 export function getOrdersFromLocalStorage() {
-	const raw = localStorage.getItem(ORDERS_STORAGE_KEY)
-	return raw ? JSON.parse(raw) : {completed: [], ongoing: []}
+	const raw = localStorage.getItem(ORDERS_STORAGE_KEY);
+	return raw ? JSON.parse(raw) : { completed: [], ongoing: [] };
 }
 
 /**
@@ -51,7 +51,7 @@ export function getOrdersFromLocalStorage() {
  * @param { Orders } orders
  */
 export function setOrdersToLocalStorage(orders) {
-	localStorage.setItem(ORDERS_STORAGE_KEY,JSON.stringify(orders))
+	localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
 }
 
 /********************************************************************************
@@ -69,7 +69,9 @@ export function setOrdersToLocalStorage(orders) {
  */
 
 export function sortMenuByPrice(menuList, mode) {
-	return mode === 'ascending' ? menuList.sort((h1 , h2) => h1.price - h2.price) : menuList.sort((h1 , h2) => h2.price - h1.price) ;
+	return mode === "ascending"
+		? menuList.sort((h1, h2) => h1.price - h2.price)
+		: menuList.sort((h1, h2) => h2.price - h1.price);
 }
 
 /**
@@ -82,7 +84,9 @@ export function sortMenuByPrice(menuList, mode) {
  * @returns { Item[] }
  */
 export function filterMenuByQuery(menuList, query) {
-	return menuList.filter((el) => el.name.toLowerCase().includes(query.toLowerCase()));;
+	return menuList.filter((el) =>
+		el.name.toLowerCase().includes(query.toLowerCase())
+	);
 }
 
 /********************************************************************************
@@ -125,9 +129,9 @@ export function removeItemFromCart(itemId, cart) {
  * Below are unctions to interact with orders data.
  */
 
-
-let orderIdCounter = localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY) ? +localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY): 0;
-
+let orderIdCounter = localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY)
+	? +localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY)
+	: 0;
 
 /**
  * Buat object order baru dan update local storage.
@@ -137,16 +141,16 @@ let orderIdCounter = localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY) ? +local
  */
 export function createNewOrder(cart, orders) {
 	let order = {
-		id:`order-${++orderIdCounter}`,
-		createdAt: (new Date()).toString(),
+		id: `order-${++orderIdCounter}`,
+		createdAt: new Date().toString(),
 		cart: cart,
 		ticket: `M${orderIdCounter}`,
-		isCompleted: false
-	}
+		isCompleted: false,
+	};
 	orders.ongoing.push(order);
 	setOrdersToLocalStorage(orders);
 }
- 
+
 /**
  * Rubah status order dari ongoing -> completed, pindahkan order dari
  * array property ongoing ke array property completed. lalu update local storage.
@@ -156,11 +160,11 @@ export function createNewOrder(cart, orders) {
  */
 export function updateOrderStatus(orderId, orders) {
 	for (let i = 0; i < orders.ongoing.length; i++) {
-		if(orderId === orders.ongoing[i].id){
-			if(orders.ongoing[i].isCompleted){
-				orders.completed.push(orders.ongoing[i])
+		if (orderId === orders.ongoing[i].id) {
+			if (orders.ongoing[i].isCompleted) {
+				orders.completed.push(orders.ongoing[i]);
 			}
-			orders.ongoing.splice(i,1);
+			orders.ongoing.splice(i, 1);
 		}
 	}
 	setOrdersToLocalStorage(orders);
