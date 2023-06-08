@@ -125,6 +125,23 @@ export function removeItemFromCart(itemId, cart) {
 	setCartToLocalStorage(cart);
 }
 
+/**
+ * Menghitung jumlah total dari semua item di dalam cart.
+ *
+ * @param { Cart } cart
+ *
+ * @returns { number }
+ */
+export function getTotalItemsInCart(cart) {
+	let total = 0;
+
+	for (const itemId in cart) {
+		total += cart[itemId];
+	}
+
+	return total;
+}
+
 /********************************************************************************
  * Below are unctions to interact with orders data.
  */
@@ -149,6 +166,10 @@ export function createNewOrder(cart, orders) {
 	};
 	orders.ongoing.push(order);
 	setOrdersToLocalStorage(orders);
+	window.localStorage.setItem(
+		ORDER_ID_COUNTER_STORAGE_KEY,
+		orderIdCounter.toString()
+	);
 }
 
 /**
@@ -161,9 +182,8 @@ export function createNewOrder(cart, orders) {
 export function updateOrderStatus(orderId, orders) {
 	for (let i = 0; i < orders.ongoing.length; i++) {
 		if (orderId === orders.ongoing[i].id) {
-			if (orders.ongoing[i].isCompleted) {
-				orders.completed.push(orders.ongoing[i]);
-			}
+			orders.ongoing[i].isCompleted = true;
+			orders.completed.push(orders.ongoing[i]);
 			orders.ongoing.splice(i, 1);
 		}
 	}
