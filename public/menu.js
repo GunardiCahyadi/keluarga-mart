@@ -3,19 +3,30 @@ import {
 	addItemToCart,
 	removeItemFromCart,
 	getCartFromLocalStorage,
-	getOrdersFromLocalStorage,
-	updateOrderStatus,
+	getTotalItemsInCart,
 } from "./shared.js";
 
 const cart = getCartFromLocalStorage();
-const orders = getOrdersFromLocalStorage();
-console.log(cart);
+
+/** @type { HTMLElement } */
+const bottombarCta = document.querySelector(".bottombar-cta");
+updateBottombarCtaText();
 
 for (let itemId in MENU) {
 	let menu = MENU[itemId];
 	renderCard(menu);
 }
 
+function updateBottombarCtaText() {
+	const totalItemsInCart = getTotalItemsInCart(cart);
+	bottombarCta.innerText = `${totalItemsInCart} ${
+		totalItemsInCart > 1 ? "items" : "item"
+	} in cart`;
+}
+
+/**
+ * @param { import("./shared.js").Item } menu
+ */
 function renderCard(menu) {
 	const itemCardBodyFooter = document.createElement("div"); // Parent dari button 'Add To Cart'
 	const itemCardQuantityEditor = document.createElement("div"); // Button + dan - setelah klik 'Add To Cart'
@@ -59,13 +70,13 @@ function renderCard(menu) {
 			Number(itemCardQuantityEditorQuantity.innerText) - 1
 		);
 		removeItemFromCart(menu.id, cart);
-		console.log(cart);
 		if (itemCardQuantityEditorQuantity.innerText === "0") {
 			itemCardBodyFooter.replaceChild(
 				itemCardAddToCart,
 				itemCardQuantityEditor
 			);
 		}
+		updateBottombarCtaText();
 	});
 
 	const itemCardQuantityEditorQuantity = document.createElement("span");
@@ -84,7 +95,7 @@ function renderCard(menu) {
 			Number(itemCardQuantityEditorQuantity.innerText) + 1
 		);
 		addItemToCart(menu.id, cart); //nyimpen ke cart biar di simpen
-		// console.log(cart)
+		updateBottombarCtaText();
 	});
 
 	// Menambahkan item ke dalam Cart
@@ -98,7 +109,7 @@ function renderCard(menu) {
 			itemCardAddToCart
 		);
 		addItemToCart(menu.id, cart);
-		// console.log(cart)
+		updateBottombarCtaText();
 	});
 
 	//append child atas ke bawah / dalam keluar

@@ -13,6 +13,9 @@ for (let key in cart) {
 
 let hasil = `${+totals} items in cart`;
 
+let test = document.getElementsByClassName("bottombar-info");
+test[0].innerHTML = hasil;
+
 let section = document.querySelector("#ongoing-orders-section > .section-body");
 
 if (orders.ongoing.length === 0) {
@@ -110,6 +113,3 @@ if (orders.completed.length === 0) {
 		section2.appendChild(card);
 	}
 }
-
-let test = document.getElementsByClassName("bottombar-info");
-test[0].innerHTML = hasil;

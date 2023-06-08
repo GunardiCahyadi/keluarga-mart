@@ -2,26 +2,26 @@ import {
 	MENU,
 	getCartFromLocalStorage,
 	getOrdersFromLocalStorage,
-	updateOrderStatus,
 	removeItemFromCart,
 	createNewOrder,
-	addItemToCart
+	addItemToCart,
+	setCartToLocalStorage,
 } from "./shared.js";
 
-const cart = getCartFromLocalStorage();
-// const cart = { "item-1": 2, "item-2": 3 };
+let cart = getCartFromLocalStorage();
 const orders = getOrdersFromLocalStorage();
 
 let cartEmpty = document.getElementById("section-body-empty");
 let cartFilled = document.getElementById("section-body-filled");
+/** @type { HTMLElement } */
 let cartPrice = document.querySelector(".bottombar-info");
 let cartCO = document.querySelector(".bottombar-cta");
 
-cartCO.addEventListener("click", function(){
-	createNewOrder(cart, orders)
-	console.log(orders)
-
-})
+cartCO.addEventListener("click", function () {
+	createNewOrder(cart, orders);
+	cart = {};
+	setCartToLocalStorage(cart);
+});
 
 function renderEmptyCart() {
 	cartEmpty.style.display = "flex";
@@ -68,14 +68,14 @@ if (Object.keys(cart).length === 0) {
 
 		let spanQuantity = document.createElement("span");
 		spanQuantity.classList.add("item-card-quantity-editor-quantity");
-		spanQuantity.innerText = cart[itemId];
+		spanQuantity.innerText = cart[itemId].toString();
 
 		let btnMin = document.createElement("button");
 		btnMin.classList.add("item-card-quantity-editor-button");
 		btnMin.innerText = "-";
 		btnMin.addEventListener("click", function () {
 			removeItemFromCart(itemId, cart);
-			spanQuantity.innerText = cart[itemId];
+			spanQuantity.innerText = cart[itemId].toString();
 
 			if (!cart[itemId]) {
 				itemDiv.remove();
@@ -91,7 +91,7 @@ if (Object.keys(cart).length === 0) {
 		btnPlus.innerText = "+";
 		btnPlus.addEventListener("click", function () {
 			addItemToCart(itemId, cart);
-			spanQuantity.innerText = cart[itemId];
+			spanQuantity.innerText = cart[itemId].toString();
 		});
 
 		let picture = document.createElement("img");
