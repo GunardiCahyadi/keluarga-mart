@@ -762,6 +762,17 @@ video {
   background-color: rgb(17 94 89 / var(--tw-bg-opacity));
 }
 
+.bottombar-cta[disabled] {
+  cursor: not-allowed;
+  --tw-text-opacity: 1;
+  color: rgb(15 118 110 / var(--tw-text-opacity));
+}
+
+.bottombar-cta[disabled]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(19 78 74 / var(--tw-bg-opacity));
+}
+
 .order-card-completed,
 .order-card-empty {
   display: flex;

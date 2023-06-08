@@ -182,9 +182,8 @@ export function createNewOrder(cart, orders) {
 export function updateOrderStatus(orderId, orders) {
 	for (let i = 0; i < orders.ongoing.length; i++) {
 		if (orderId === orders.ongoing[i].id) {
-			if (orders.ongoing[i].isCompleted) {
-				orders.completed.push(orders.ongoing[i]);
-			}
+			orders.ongoing[i].isCompleted = true;
+			orders.completed.push(orders.ongoing[i]);
 			orders.ongoing.splice(i, 1);
 		}
 	}

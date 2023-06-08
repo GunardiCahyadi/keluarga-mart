@@ -66,6 +66,10 @@
 	@apply h-14 w-full flex items-center justify-center uppercase tracking-[0.16em] leading-none font-semibold text-teal-50 bg-teal-900 hover:bg-teal-800;
 }
 
+.bottombar-cta[disabled] {
+	@apply cursor-not-allowed text-teal-700 hover:bg-teal-900;
+}
+
 .order-card-completed,
 .order-card-empty {
 	@apply h-16 rounded-md px-5 flex flex-col justify-center gap-y-2 bg-stone-100;
