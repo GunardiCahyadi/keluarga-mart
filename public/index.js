@@ -30,6 +30,9 @@ function render() {
 		"#completed-orders-section > .section-body"
 	);
 
+	section.replaceChildren();
+	section2.replaceChildren();
+
 	if (orders.ongoing.length === 0) {
 		let empty = document.createElement("div");
 		empty.classList.add("order-card-empty");
@@ -85,6 +88,7 @@ function render() {
 				let interval;
 				interval = setInterval(function countdown() {
 					remainingTime--;
+					console.log(remainingTime);
 
 					if (remainingTime < 1) {
 						clearInterval(interval);
@@ -96,6 +100,10 @@ function render() {
 						timer.innerText = `${remainingTime}s`;
 					}
 				}, 1_000);
+				window.addEventListener("beforeunload", () => {
+					console.log("cleanup");
+					clearInterval(interval);
+				});
 			}
 
 			ongoing.appendChild(ticket);
