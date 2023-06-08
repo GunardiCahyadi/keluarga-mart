@@ -17,7 +17,13 @@ const ORDERS_STORAGE_KEY = "keluargaMartOrders";
  * @returns { Cart }
  */
 export function getCartFromLocalStorage() {
-	return {};
+	let getData = JSON.parse(localStorage.getItem(CART_STORAGE_KEY));
+
+	if (getData === undefined) {
+		return {};
+	} else {
+		return getData;
+	}
 }
 
 /**
@@ -25,7 +31,9 @@ export function getCartFromLocalStorage() {
  *
  * @param { Cart } cart
  */
-export function setCartToLocalStorage(cart) {}
+export function setCartToLocalStorage(cart) {
+	localStorage.setItem('keluargaMartCart', JSON.stringify(cart));
+}
 
 /**
  * Mengambil object orders dari local storage.
@@ -57,8 +65,9 @@ export function setOrdersToLocalStorage(orders) {
  * @param { Item[] } menuList
  * @param { "ascending" | "descending" } mode
  *
- * @returns { Item[] }
+ * @returns { Item [] }
  */
+
 export function sortMenuByPrice(menuList, mode) {
 	return mode === 'ascending' ? menuList.sort((h1 , h2) => h1.price - h2.price) : menuList.sort((h1 , h2) => h2.price - h1.price) ;
 }
@@ -86,8 +95,15 @@ export function filterMenuByQuery(menuList, query) {
  * @param { string } itemId
  * @param { Cart } cart
  */
+
 export function addItemToCart(itemId, cart) {
-	return {};
+	if (cart[itemId] === undefined) {
+		cart[itemId] = 1;
+	} else {
+		cart[itemId]++;
+	}
+
+	setCartToLocalStorage(cart);
 }
 
 /**
@@ -96,7 +112,14 @@ export function addItemToCart(itemId, cart) {
  * @param { string } itemId
  * @param { Cart } cart
  */
-export function removeItemFromCart(itemId, cart) {}
+export function removeItemFromCart(itemId, cart) {
+	cart[itemId]--;
+
+	if (cart[itemId] === 0) {
+		delete cart[itemId];
+	}
+	setCartToLocalStorage(cart);
+}
 
 /********************************************************************************
  * Below are unctions to interact with orders data.
