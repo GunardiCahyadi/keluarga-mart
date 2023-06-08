@@ -18,6 +18,7 @@ const ORDERS_STORAGE_KEY = "keluargaMartOrders";
  */
 export function getCartFromLocalStorage() {
 	let getData = localStorage.getItem(CART_STORAGE_KEY);
+
 	if (!getData) {
 		return {};
 	} else {
