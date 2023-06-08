@@ -111,7 +111,7 @@ if (Object.keys(cart).length === 0) {
 
 		let picture = document.createElement("img");
 		picture.classList.add("item-card-image");
-		picture.setAttribute("src", `/assets/${itemId}.jpeg`);
+		picture.setAttribute("src", `assets/${itemId}.jpeg`);
 		picture.setAttribute("alt", "");
 		picture.setAttribute("height", "120");
 		picture.setAttribute("width", "120");
