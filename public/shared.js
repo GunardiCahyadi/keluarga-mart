@@ -102,8 +102,7 @@ export function sortMenuByPrice(menuList, mode) {
  * @returns { Item[] }
  */
 export function filterMenuByQuery(menuList, query) {
-	let nameFil = menuList.filter(item => item.name === query)
-	return nameFil
+	return menuList.filter((el) => el.name.toLowerCase().includes(query.toLowerCase()));;
 }
 
 /********************************************************************************
