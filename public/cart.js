@@ -4,16 +4,24 @@ import {
 	getOrdersFromLocalStorage,
 	updateOrderStatus,
 	removeItemFromCart,
+	createNewOrder,
+	addItemToCart
 } from "./shared.js";
 
-// const cart = getCartFromLocalStorage();
-const cart = { "item-1": 2, "item-2": 3 };
-const oreders = getOrdersFromLocalStorage();
+const cart = getCartFromLocalStorage();
+// const cart = { "item-1": 2, "item-2": 3 };
+const orders = getOrdersFromLocalStorage();
 
 let cartEmpty = document.getElementById("section-body-empty");
 let cartFilled = document.getElementById("section-body-filled");
 let cartPrice = document.querySelector(".bottombar-info");
 let cartCO = document.querySelector(".bottombar-cta");
+
+cartCO.addEventListener("click", function(){
+	createNewOrder(cart, orders)
+	console.log(orders)
+
+})
 
 function renderEmptyCart() {
 	cartEmpty.style.display = "flex";
@@ -82,7 +90,7 @@ if (Object.keys(cart).length === 0) {
 		btnPlus.classList.add("item-card-quantity-editor-button");
 		btnPlus.innerText = "+";
 		btnPlus.addEventListener("click", function () {
-			cart[itemId]++;
+			addItemToCart(itemId, cart);
 			spanQuantity.innerText = cart[itemId];
 		});
 
