@@ -88,8 +88,7 @@ export function setOrdersToLocalStorage(orders) {
  * @returns { Item[] }
  */
 export function sortMenuByPrice(menuList, mode) {
-	mode === 'ascending' ? menuList.sort((h1 , h2) => h1.price - h2.price) : menuList.sort((h1 , h2) => h2.price - h1.price) ;
-	return menuList;
+	return mode === 'ascending' ? menuList.sort((h1 , h2) => h1.price - h2.price) : menuList.sort((h1 , h2) => h2.price - h1.price) ;
 }
 
 /**
