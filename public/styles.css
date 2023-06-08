@@ -621,11 +621,6 @@ video {
   justify-content: center;
 }
 
-.main {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .container {
   display: flex;
   height: 100%;
@@ -664,10 +659,12 @@ video {
   flex: 1 1 0%;
   flex-direction: column;
   row-gap: 2.5rem;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
 }
 
 .section {

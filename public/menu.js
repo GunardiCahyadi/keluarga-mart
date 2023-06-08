@@ -3,54 +3,72 @@ import {
 	addItemToCart,
 	removeItemFromCart,
 	getCartFromLocalStorage,
-  updateOrderStatus,
 	filterMenuByQuery,
 	sortMenuByPrice,
-  getTotalItemsInCart,
+	getTotalItemsInCart,
 } from "./shared.js";
 
 const cart = getCartFromLocalStorage();
-const search = document.getElementById('menu-search-input');
-const sort = document.querySelector('.section-topbar-cta');
+const search = document.getElementById("menu-search-input");
+const sort = document.querySelector(".section-topbar-cta");
 /** @type { HTMLElement } */
 const bottombarCta = document.querySelector(".bottombar-cta");
 updateBottombarCtaText();
 
+const defaultMenuList = Object.values(MENU);
+let currentMenuList = defaultMenuList;
+let sortingMode = "off";
+
 //Fitur Search
-search.addEventListener('keyup', cariList)
-const sectionBody = document.querySelector(`.section-body`)
+search.addEventListener("keyup", cariList);
+const sectionBody = document.querySelector(`.section-body`);
 
 function cariList(event) {
 	const text = event.target.value;
-	const filtered = filterMenuByQuery(Object.values(MENU), text)
-	sectionBody.replaceChildren()
-	render(filtered);
+	if (!text) {
+		currentMenuList = defaultMenuList;
+	} else {
+		currentMenuList = filterMenuByQuery(defaultMenuList, text);
+	}
+	sectionBody.replaceChildren();
+
+	switch (sortingMode) {
+		case "ascending":
+			render(sortMenuByPrice(currentMenuList, "ascending"));
+		case "descending":
+			render(sortMenuByPrice(currentMenuList, "descending"));
+		default:
+			render(currentMenuList);
+	}
 }
 
-sort.addEventListener(`click`, sortir)
+sort.addEventListener(`click`, sortir);
 function sortir() {
-	let on = document.querySelector('.section-topbar-cta span');
+	let on = document.querySelector(".section-topbar-cta span");
 	let sort;
-	if(on.innerHTML === 'Off') {
-		on.innerHTML = 'LOWEST';
-		sort = sortMenuByPrice(Object.values(MENU),'ascending')
-	}else if(on.innerHTML === 'LOWEST'){
-		on.innerHTML = 'HIGHEST';
-		sort = sortMenuByPrice(Object.values(MENU),"descending")
-	}else{
-		on.innerHTML = 'Off';
-		sort = Object.values(MENU);
+	if (on.innerHTML === "Off") {
+		on.innerHTML = "LOWEST";
+		sortingMode = "ascending";
+		sort = sortMenuByPrice(currentMenuList, "ascending");
+	} else if (on.innerHTML === "LOWEST") {
+		on.innerHTML = "HIGHEST";
+		sortingMode = "descending";
+		sort = sortMenuByPrice(currentMenuList, "descending");
+	} else {
+		on.innerHTML = "Off";
+		sortingMode = "off";
+		sort = currentMenuList;
 	}
-	sectionBody.replaceChildren()
+	sectionBody.replaceChildren();
 	render(sort);
 }
 
-render(Object.values(MENU))
+render(Object.values(MENU));
 
-function render(menuList){
-  for (let menu of menuList) {
-    renderCard(menu);
-  }
+function render(menuList) {
+	for (let menu of menuList) {
+		renderCard(menu);
+	}
 }
 
 function updateBottombarCtaText() {

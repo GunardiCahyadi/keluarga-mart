@@ -69,9 +69,11 @@ export function setOrdersToLocalStorage(orders) {
  */
 
 export function sortMenuByPrice(menuList, mode) {
+	const clone = [...menuList];
+
 	return mode === "ascending"
-		? menuList.sort((h1, h2) => h1.price - h2.price)
-		: menuList.sort((h1, h2) => h2.price - h1.price);
+		? clone.sort((h1, h2) => h1.price - h2.price)
+		: clone.sort((h1, h2) => h2.price - h1.price);
 }
 
 /**
