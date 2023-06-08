@@ -3,8 +3,8 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"build": "tailwindcss -i ./src/tailwind.css -o ./public/styles.css",
-		"dev": "tailwindcss -i ./src/tailwind.css -o ./public/styles.css --watch",
+		"build": "tailwindcss -i ./src/tailwind.css -o ./styles.css",
+		"dev": "tailwindcss -i ./src/tailwind.css -o ./styles.css --watch",
 		"format": "prettier -uw .",
 		"test": "vitest",
 		"prepare": "husky install",
