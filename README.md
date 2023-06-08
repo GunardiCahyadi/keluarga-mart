@@ -1,5 +1,7 @@
 # Keluarga Mart
 
+Deployed here: https://thriving-chebakia-0a1be1.netlify.app/
+
 ## Local Development Setup
 
 Install dependencies:
