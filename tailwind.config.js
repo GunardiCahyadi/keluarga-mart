@@ -4,6 +4,11 @@ import { fontFamily } from "tailwindcss/defaultTheme.js";
 export default {
 	content: ["./public/**/*.{html,js}"],
 	theme: {
+		extend: {
+			screens: {
+				xs: "448px",
+			},
+		},
 		fontFamily: {
 			display: ["Poppins"],
 			sans: ["Inter", ...fontFamily.sans],
