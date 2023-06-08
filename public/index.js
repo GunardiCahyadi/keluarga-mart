@@ -121,7 +121,7 @@ function render() {
 		gaps.appendChild(kosong);
 		section2.appendChild(kosong);
 	} else {
-		for (let i = 0; i < orders.completed.length; i++) {
+		for (let i = orders.completed.length - 1; i >= 0; i--) {
 			let completed = orders.completed[i];
 
 			let card = document.createElement("div");
