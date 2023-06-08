@@ -87,6 +87,7 @@ if (Object.keys(cart).length === 0) {
 		btnMin.innerText = "-";
 		btnMin.addEventListener("click", function () {
 			removeItemFromCart(itemId, cart);
+			updateTotalPrice();
 
 			if (!cart[itemId]) {
 				itemDiv.remove();
@@ -96,7 +97,6 @@ if (Object.keys(cart).length === 0) {
 				}
 			} else {
 				spanQuantity.innerText = cart[itemId].toString();
-				updateTotalPrice();
 			}
 		});
 
