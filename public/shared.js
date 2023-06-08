@@ -60,7 +60,7 @@ export function getCartFromLocalStorage() {
  * @param { Cart } cart
  */
 export function setCartToLocalStorage(cart) {
-	localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+	localStorage.setItem('keluargaMartCart', JSON.stringify(cart));
 }
 
 /**
