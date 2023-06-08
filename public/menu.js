@@ -3,18 +3,54 @@ import {
 	addItemToCart,
 	removeItemFromCart,
 	getCartFromLocalStorage,
-	getTotalItemsInCart,
+  updateOrderStatus,
+	filterMenuByQuery,
+	sortMenuByPrice,
+  getTotalItemsInCart,
 } from "./shared.js";
 
 const cart = getCartFromLocalStorage();
-
+const search = document.getElementById('menu-search-input');
+const sort = document.querySelector('.section-topbar-cta');
 /** @type { HTMLElement } */
 const bottombarCta = document.querySelector(".bottombar-cta");
 updateBottombarCtaText();
 
-for (let itemId in MENU) {
-	let menu = MENU[itemId];
-	renderCard(menu);
+//Fitur Search
+search.addEventListener('keyup', cariList)
+const sectionBody = document.querySelector(`.section-body`)
+
+function cariList(event) {
+	const text = event.target.value;
+	const filtered = filterMenuByQuery(Object.values(MENU), text)
+	sectionBody.replaceChildren()
+	render(filtered);
+}
+
+sort.addEventListener(`click`, sortir)
+function sortir() {
+	let on = document.querySelector('.section-topbar-cta span');
+	let sort;
+	if(on.innerHTML === 'Off') {
+		on.innerHTML = 'LOWEST';
+		sort = sortMenuByPrice(Object.values(MENU),'ascending')
+	}else if(on.innerHTML === 'LOWEST'){
+		on.innerHTML = 'HIGHEST';
+		sort = sortMenuByPrice(Object.values(MENU),"descending")
+	}else{
+		on.innerHTML = 'Off';
+		sort = Object.values(MENU);
+	}
+	sectionBody.replaceChildren()
+	render(sort);
+}
+
+render(Object.values(MENU))
+
+function render(menuList){
+  for (let menu of menuList) {
+    renderCard(menu);
+  }
 }
 
 function updateBottombarCtaText() {
