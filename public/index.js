@@ -15,7 +15,7 @@ for (let key in cart) {
 /** @type { HTMLElement } */
 let bottombarInfo = document.querySelector(".bottombar-info");
 if (total > 0) {
-	let hasil = `${+total} items in cart`;
+	let hasil = `${total} ${total < 2 ? "item" : "items"} in cart`;
 	bottombarInfo.innerText = hasil;
 	bottombarInfo.style.display = "flex";
 }
@@ -79,29 +79,23 @@ function render() {
 
 			if (remainingTime < 1) {
 				updateOrderStatus(order.id, orders);
-				section.replaceChildren();
-				section2.replaceChildren();
 				render();
-				break;
+				return;
 			} else {
 				timer.innerText = `${remainingTime}s`;
 				let interval;
 				interval = setInterval(function countdown() {
 					remainingTime--;
-					console.log(remainingTime);
 
 					if (remainingTime < 1) {
 						clearInterval(interval);
 						updateOrderStatus(order.id, orders);
-						section.replaceChildren();
-						section2.replaceChildren();
 						render();
 					} else {
 						timer.innerText = `${remainingTime}s`;
 					}
 				}, 1_000);
 				window.addEventListener("beforeunload", () => {
-					console.log("cleanup");
 					clearInterval(interval);
 				});
 			}
@@ -110,8 +104,6 @@ function render() {
 			ongoing.appendChild(quantity);
 			card.appendChild(ongoing);
 			card.appendChild(timer);
-
-			console.log(section);
 			section.appendChild(card);
 		}
 	}

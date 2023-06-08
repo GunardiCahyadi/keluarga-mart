@@ -17,12 +17,12 @@ const ORDERS_STORAGE_KEY = "keluargaMartOrders";
  * @returns { Cart }
  */
 export function getCartFromLocalStorage() {
-	let getData = JSON.parse(localStorage.getItem(CART_STORAGE_KEY));
+	let getData = localStorage.getItem(CART_STORAGE_KEY);
 
-	if (getData === undefined) {
+	if (!getData) {
 		return {};
 	} else {
-		return getData;
+		return JSON.parse(getData);
 	}
 }
 
@@ -32,7 +32,7 @@ export function getCartFromLocalStorage() {
  * @param { Cart } cart
  */
 export function setCartToLocalStorage(cart) {
-	localStorage.setItem('keluargaMartCart', JSON.stringify(cart));
+	localStorage.setItem("keluargaMartCart", JSON.stringify(cart));
 }
 
 /**
@@ -41,8 +41,8 @@ export function setCartToLocalStorage(cart) {
  * @returns { Orders }
  */
 export function getOrdersFromLocalStorage() {
-	return JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY))
-	
+	const raw = localStorage.getItem(ORDERS_STORAGE_KEY);
+	return raw ? JSON.parse(raw) : { completed: [], ongoing: [] };
 }
 
 /**
@@ -51,7 +51,7 @@ export function getOrdersFromLocalStorage() {
  * @param { Orders } orders
  */
 export function setOrdersToLocalStorage(orders) {
-	localStorage.setItem(ORDERS_STORAGE_KEY,JSON.stringify(orders))
+	localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
 }
 
 /********************************************************************************
@@ -69,7 +69,11 @@ export function setOrdersToLocalStorage(orders) {
  */
 
 export function sortMenuByPrice(menuList, mode) {
-	return mode === 'ascending' ? menuList.sort((h1 , h2) => h1.price - h2.price) : menuList.sort((h1 , h2) => h2.price - h1.price) ;
+	const clone = [...menuList];
+
+	return mode === "ascending"
+		? clone.sort((h1, h2) => h1.price - h2.price)
+		: clone.sort((h1, h2) => h2.price - h1.price);
 }
 
 /**
@@ -82,7 +86,9 @@ export function sortMenuByPrice(menuList, mode) {
  * @returns { Item[] }
  */
 export function filterMenuByQuery(menuList, query) {
-	return menuList.filter((el) => el.name.toLowerCase().includes(query.toLowerCase()));;
+	return menuList.filter((el) =>
+		el.name.toLowerCase().includes(query.toLowerCase())
+	);
 }
 
 /********************************************************************************
@@ -142,9 +148,9 @@ export function getTotalItemsInCart(cart) {
  * Below are unctions to interact with orders data.
  */
 
-
-let orderIdCounter = localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY) ? +localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY): 0;
-
+let orderIdCounter = localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY)
+	? +localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY)
+	: 0;
 
 /**
  * Buat object order baru dan update local storage.
@@ -154,12 +160,12 @@ let orderIdCounter = localStorage.getItem(ORDER_ID_COUNTER_STORAGE_KEY) ? +local
  */
 export function createNewOrder(cart, orders) {
 	let order = {
-		id:`order-${++orderIdCounter}`,
-		createdAt: (new Date()).toString(),
+		id: `order-${++orderIdCounter}`,
+		createdAt: new Date().toString(),
 		cart: cart,
 		ticket: `M${orderIdCounter}`,
-		isCompleted: false
-	}
+		isCompleted: false,
+	};
 	orders.ongoing.push(order);
 	setOrdersToLocalStorage(orders);
 	window.localStorage.setItem(
@@ -167,7 +173,7 @@ export function createNewOrder(cart, orders) {
 		orderIdCounter.toString()
 	);
 }
- 
+
 /**
  * Rubah status order dari ongoing -> completed, pindahkan order dari
  * array property ongoing ke array property completed. lalu update local storage.
@@ -411,13 +417,13 @@ export const MENU = {
 	"item-33": {
 		id: "item-33",
 		name: "Hot Latte",
-		price: 12500,
+		price: 14500,
 		imageUrl: "/assets/item-33.jpeg",
 	},
 	"item-34": {
 		id: "item-34",
 		name: "Hot Vanilla Latte",
-		price: 12500,
+		price: 14500,
 		imageUrl: "/assets/item-34.jpeg",
 	},
 	"item-35": {
@@ -441,13 +447,13 @@ export const MENU = {
 	"item-38": {
 		id: "item-38",
 		name: "Hot Green Tea Latte",
-		price: 13500,
+		price: 14500,
 		imageUrl: "/assets/item-38.jpeg",
 	},
 	"item-39": {
 		id: "item-39",
 		name: "Hot Peppermint Chocolate",
-		price: 13500,
+		price: 14500,
 		imageUrl: "/assets/item-39.jpeg",
 	},
 	"item-40": {
