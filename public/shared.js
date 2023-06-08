@@ -61,8 +61,8 @@ export function setCartToLocalStorage(cart) {}
  * @returns { Orders }
  */
 export function getOrdersFromLocalStorage() {
-	let orders = JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY))
-	return orders;
+	return JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY))
+	
 }
 
 /**
@@ -89,6 +89,7 @@ export function setOrdersToLocalStorage(orders) {
  */
 export function sortMenuByPrice(menuList, mode) {
 	mode === 'ascending' ? menuList.sort((h1 , h2) => h1.price - h2.price) : menuList.sort((h1 , h2) => h2.price - h1.price) ;
+	return menuList;
 }
 
 /**
@@ -102,7 +103,7 @@ export function sortMenuByPrice(menuList, mode) {
  */
 export function filterMenuByQuery(menuList, query) {
 	let nameFil = menuList.filter(item => item.name === query)
-	return nameFill
+	return nameFil
 }
 
 /********************************************************************************
