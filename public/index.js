@@ -15,7 +15,7 @@ for (let key in cart) {
 /** @type { HTMLElement } */
 let bottombarInfo = document.querySelector(".bottombar-info");
 if (total > 0) {
-	let hasil = `${+total} items in cart`;
+	let hasil = `${total} ${total < 2 ? "item" : "items"} in cart`;
 	bottombarInfo.innerText = hasil;
 	bottombarInfo.style.display = "flex";
 }
