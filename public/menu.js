@@ -5,17 +5,28 @@ import {
 	getCartFromLocalStorage,
 	getOrdersFromLocalStorage,
 	updateOrderStatus,
+	filterMenuByQuery
 } from "./shared.js";
 
 const cart = getCartFromLocalStorage();
 const orders = getOrdersFromLocalStorage();
-console.log(cart);
-
-for (let itemId in MENU) {
-	let menu = MENU[itemId];
+const search = document.getElementById('menu-search-input');
+search.addEventListener('keyup', cariList)
+const sectionBody = document.querySelector(`.section-body`)
+//Fitur Search
+function cariList(event) {
+	const text = event.target.value;
+	const filtered = filterMenuByQuery(Object.values(MENU), text)
+	sectionBody.replaceChildren()
+	render(filtered);
+}
+render(Object.values(MENU))
+function render(menuList){
+for (let menu of menuList) {
 	renderCard(menu);
 }
 
+}
 function renderCard(menu) {
 	const itemCardBodyFooter = document.createElement("div"); // Parent dari button 'Add To Cart'
 	const itemCardQuantityEditor = document.createElement("div"); // Button + dan - setelah klik 'Add To Cart'
