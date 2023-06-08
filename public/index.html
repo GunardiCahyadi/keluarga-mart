@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full text-stone-900">
+<html lang="en" class="html">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,61 +11,50 @@
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@900&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="index.css" />
+		<link rel="stylesheet" href="styles.css" />
 
 		<title>KeluargaMart</title>
 	</head>
-	<body class="h-full flex justify-center bg-gray-900">
-		<div class="relative h-full w-full max-w-md flex flex-col bg-white">
-			<header class="h-14 flex items-center justify-center bg-stone-100">
-				<a href="/" class="flex font-display font-black text-2xl">
+	<body class="body">
+		<div class="container">
+			<header class="topbar">
+				<a href="/" class="logo-container">
 					<span class="text-teal-900">Keluarga</span>
 					<span class="text-orange-600">Mart</span>
 				</a>
 			</header>
-			<main class="flex-1 py-10 px-5 flex flex-col gap-y-5">
-				<section class="flex flex-col gap-y-5">
-					<h1 class="font-bold leading-none text-xl text-teal-900">
-						Ongoing Orders
-					</h1>
-					<div class="flex flex-col gap-y-5">
-						<div
-							class="h-16 rounded-md px-5 flex flex-col justify-center gap-y-2 text-orange-600 bg-orange-50"
-						>
-							<span
-								class="leading-none font-semibold text-teal-900"
-								>M004</span
-							>
-							<span class="leading-none text-sm text-stone-700">
-								3 items
-							</span>
+			<main class="main">
+				<section id="ongoing-orders-section" class="section">
+					<h1 class="section-title">Ongoing Orders</h1>
+					<div class="section-body gap-y-5">
+						<div class="order-card-ongoing">
+							<div class="order-card-ongoing-body">
+								<span class="order-card-ongoing-ticket"
+									>M4</span
+								>
+								<span class="order-card-ongoing-quantity">
+									3 items
+								</span>
+							</div>
+							<span class="order-card-ongoing-timer">10s</span>
 						</div>
-						<div
-							class="h-16 rounded-md px-5 flex items-center bg-stone-100"
-						>
+						<div class="order-card-empty">
 							<p class="italic leading-none">No ongoing order.</p>
 						</div>
 					</div>
 				</section>
-				<section class="flex flex-col gap-y-5">
-					<h1 class="font-bold leading-none text-xl text-teal-900">
-						Completed Orders
-					</h1>
-					<div class="flex flex-col gap-y-5">
-						<div
-							class="h-16 rounded-md px-5 flex flex-col justify-center gap-y-2 bg-stone-100"
-						>
-							<span
-								class="leading-none font-semibold text-teal-900"
+				<section id="completed-orders-section" class="section">
+					<h1 class="section-title">Completed Orders</h1>
+					<div class="section-body gap-y-5">
+						<div class="order-card-completed">
+							<span class="order-card-completed-title"
 								>3 items</span
 							>
-							<span class="leading-none text-sm text-stone-700">
+							<span class="order-card-completed-date">
 								6/7/2023, 2:51:38 PM
 							</span>
 						</div>
-						<div
-							class="h-16 rounded-md px-5 flex items-center bg-stone-100"
-						>
+						<div class="order-card-empty">
 							<p class="italic leading-none">
 								No completed order.
 							</p>
@@ -73,18 +62,9 @@
 					</div>
 				</section>
 			</main>
-			<footer class="absolute inset-x-0 bottom-0">
-				<div
-					class="h-9 w-full flex items-center justify-center uppercase tracking-[0.08em] leading-none font-bold text-xs text-teal-900 bg-teal-100"
-				>
-					2 items in cart
-				</div>
-				<a
-					href="/menu.html"
-					class="h-14 w-full flex items-center justify-center uppercase tracking-[0.16em] leading-none font-semibold text-teal-50 bg-teal-900 hover:bg-teal-800"
-				>
-					Menu
-				</a>
+			<footer class="bottombar">
+				<div class="bottombar-info">2 items in cart</div>
+				<a href="/menu.html" class="bottombar-cta"> Menu </a>
 			</footer>
 		</div>
 
