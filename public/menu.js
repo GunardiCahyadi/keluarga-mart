@@ -35,8 +35,10 @@ function cariList(event) {
 	switch (sortingMode) {
 		case "ascending":
 			render(sortMenuByPrice(currentMenuList, "ascending"));
+			break;
 		case "descending":
 			render(sortMenuByPrice(currentMenuList, "descending"));
+			break;
 		default:
 			render(currentMenuList);
 	}
