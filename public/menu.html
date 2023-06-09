@@ -25,7 +25,7 @@
 				</a>
 			</header>
 			<main class="main">
-				<section class="section h-full">
+				<section class="section h-full gap-y-0">
 					<div class="section-topbar">
 						<h1 class="section-title">Choose Your Drinks</h1>
 						<div class="relative">
@@ -35,12 +35,16 @@
 							</button>
 						</div>
 					</div>
-					<input
-						id="menu-search-input"
-						class="h-10 rounded-md border border-stone-200 px-5 flex items-center focus:outline-teal-600"
-						type="text"
-						placeholder="Search here.."
-					/>
+					<div
+						class="sticky top-14 py-5 bg-white/70 backdrop-blur-md"
+					>
+						<input
+							id="menu-search-input"
+							class="h-10 w-full rounded-md border border-stone-200 px-5 flex items-center focus:outline-teal-600"
+							type="text"
+							placeholder="Search here.."
+						/>
+					</div>
 					<div class="section-body border-t border-t-stone-100"></div>
 				</section>
 			</main>

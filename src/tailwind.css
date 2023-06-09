@@ -1,140 +1,143 @@
 @tailwind base;
+@tailwind components;
 @tailwind utilities;
 @tailwind variants;
 
-.html {
-	@apply h-full text-stone-900 bg-stone-900;
-}
+@layer components {
+	.html {
+		@apply h-full text-stone-900 bg-stone-900;
+	}
 
-.body {
-	@apply h-full flex justify-center;
-}
+	.body {
+		@apply h-full flex justify-center;
+	}
 
-.container {
-	@apply h-full w-full max-w-md flex flex-col bg-white;
-}
+	.container {
+		@apply h-full w-full max-w-md flex flex-col bg-white;
+	}
 
-.topbar {
-	@apply fixed top-0 z-10 h-14 w-full flex items-center justify-center bg-stone-100 xs:w-[28rem];
-}
+	.topbar {
+		@apply fixed top-0 z-10 h-14 w-full flex items-center justify-center bg-stone-100 xs:w-[28rem];
+	}
 
-.logo-container {
-	@apply flex font-display font-black text-2xl;
-}
+	.logo-container {
+		@apply flex font-display font-black text-2xl;
+	}
 
-.main {
-	@apply flex-1 my-14 pt-10 pb-20 px-5 flex flex-col gap-y-10 bg-white;
-}
+	.main {
+		@apply flex-1 my-14 pt-10 pb-20 px-5 flex flex-col gap-y-10 bg-white;
+	}
 
-.section {
-	@apply flex flex-col gap-y-5;
-}
+	.section {
+		@apply flex flex-col gap-y-5;
+	}
 
-.section-topbar {
-	@apply flex items-center justify-between;
-}
+	.section-topbar {
+		@apply flex items-center justify-between;
+	}
 
-.section-topbar-cta {
-	@apply uppercase text-sm text-teal-900 bg-teal-50 cursor-pointer hover:bg-green-50;
-}
+	.section-topbar-cta {
+		@apply uppercase text-sm text-teal-900 bg-teal-50 cursor-pointer hover:bg-green-50;
+	}
 
-.section-topbar-sorting-mode {
-	@apply text-orange-600;
-}
+	.section-topbar-sorting-mode {
+		@apply text-orange-600;
+	}
 
-.section-title {
-	@apply font-bold leading-none text-xl text-teal-900;
-}
+	.section-title {
+		@apply font-bold leading-none text-xl text-teal-900;
+	}
 
-.section-body {
-	@apply flex flex-col;
-}
+	.section-body {
+		@apply flex flex-col;
+	}
 
-.bottombar {
-	@apply fixed bottom-0 w-full xs:w-[28rem];
-}
+	.bottombar {
+		@apply fixed bottom-0 w-full xs:w-[28rem];
+	}
 
-.bottombar-info {
-	@apply h-9 w-full flex items-center justify-center uppercase tracking-[0.08em] leading-none font-bold text-xs text-teal-900 bg-teal-100;
-}
+	.bottombar-info {
+		@apply h-9 w-full flex items-center justify-center uppercase tracking-[0.08em] leading-none font-bold text-xs text-teal-900 bg-teal-100;
+	}
 
-.bottombar-cta {
-	@apply h-14 w-full flex items-center justify-center uppercase tracking-[0.16em] leading-none font-semibold text-teal-50 bg-teal-900 hover:bg-teal-800;
-}
+	.bottombar-cta {
+		@apply h-14 w-full flex items-center justify-center uppercase tracking-[0.16em] leading-none font-semibold text-teal-50 bg-teal-900 hover:bg-teal-800;
+	}
 
-.bottombar-cta[disabled] {
-	@apply cursor-not-allowed text-teal-700 hover:bg-teal-900;
-}
+	.bottombar-cta[disabled] {
+		@apply cursor-not-allowed text-teal-700 hover:bg-teal-900;
+	}
 
-.order-card-completed,
-.order-card-empty {
-	@apply h-16 rounded-md px-5 flex flex-col justify-center gap-y-2 bg-stone-100;
-}
+	.order-card-completed,
+	.order-card-empty {
+		@apply h-16 rounded-md px-5 flex flex-col justify-center gap-y-2 bg-stone-100;
+	}
 
-.order-card-ongoing {
-	@apply h-16 rounded-md px-5 flex items-center justify-between bg-orange-50;
-}
+	.order-card-ongoing {
+		@apply h-16 rounded-md px-5 flex items-center justify-between bg-orange-50;
+	}
 
-.order-card-ongoing-body {
-	@apply flex flex-col justify-center gap-y-2;
-}
+	.order-card-ongoing-body {
+		@apply flex flex-col justify-center gap-y-2;
+	}
 
-.order-card-ongoing-timer {
-	@apply font-semibold text-orange-300;
-}
+	.order-card-ongoing-timer {
+		@apply font-semibold text-orange-300;
+	}
 
-.order-card-ongoing-ticket {
-	@apply leading-none font-semibold text-orange-600;
-}
+	.order-card-ongoing-ticket {
+		@apply leading-none font-semibold text-orange-600;
+	}
 
-.order-card-ongoing-quantity {
-	@apply leading-none text-sm text-stone-700;
-}
+	.order-card-ongoing-quantity {
+		@apply leading-none text-sm text-stone-700;
+	}
 
-.order-card-completed-title {
-	@apply leading-none font-semibold text-teal-900;
-}
+	.order-card-completed-title {
+		@apply leading-none font-semibold text-teal-900;
+	}
 
-.order-card-completed-date {
-	@apply leading-none text-sm text-stone-700;
-}
+	.order-card-completed-date {
+		@apply leading-none text-sm text-stone-700;
+	}
 
-.item-card {
-	@apply py-5 flex gap-x-5 border-b border-b-stone-100;
-}
+	.item-card {
+		@apply py-5 flex gap-x-5 border-b border-b-stone-100;
+	}
 
-.item-card-body {
-	@apply flex-1 flex flex-col justify-between;
-}
+	.item-card-body {
+		@apply flex-1 flex flex-col justify-between;
+	}
 
-.item-card-image {
-	@apply h-[120px] w-[120px] object-cover;
-}
+	.item-card-image {
+		@apply h-[120px] w-[120px] object-cover;
+	}
 
-.item-card-title {
-	@apply leading-tight font-semibold text-lg;
-}
+	.item-card-title {
+		@apply leading-tight font-semibold text-lg;
+	}
 
-.item-card-body-footer {
-	@apply flex flex-col gap-y-3;
-}
+	.item-card-body-footer {
+		@apply flex flex-col gap-y-3;
+	}
 
-.item-card-price {
-	@apply leading-none text-sm text-stone-600;
-}
+	.item-card-price {
+		@apply leading-none text-sm text-stone-600;
+	}
 
-.item-card-add-to-cart {
-	@apply h-9 flex items-center justify-center uppercase tracking-[0.08em] leading-none font-semibold text-xs text-teal-900 bg-teal-50 hover:bg-green-50;
-}
+	.item-card-add-to-cart {
+		@apply h-9 flex items-center justify-center uppercase tracking-[0.08em] leading-none font-semibold text-xs text-teal-900 bg-teal-50 hover:bg-green-50;
+	}
 
-.item-card-quantity-editor {
-	@apply flex items-center justify-between;
-}
+	.item-card-quantity-editor {
+		@apply flex items-center justify-between;
+	}
 
-.item-card-quantity-editor-button {
-	@apply h-9 w-9 rounded-md font-semibold text-teal-900 bg-teal-50 hover:bg-green-50;
-}
+	.item-card-quantity-editor-button {
+		@apply h-9 w-9 rounded-md font-semibold text-teal-900 bg-teal-50 hover:bg-green-50;
+	}
 
-.item-card-quantity-editor-quantity {
-	@apply leading-none text-sm text-stone-600;
+	.item-card-quantity-editor-quantity {
+		@apply leading-none text-sm text-stone-600;
+	}
 }
